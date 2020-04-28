@@ -97,7 +97,11 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             snoozePendingIntent
         )
 
-    // TODO: Step 2.5 set priority
+        // TODO: Step 2.5 set priority
+        //To support devices running API level 25 or lower, you must also call setPriority()
+        // for each notification, using a constant from the NotificationCompat class
+        //Before running the app, uninstall the app from your device or emulator to clear previous channel settings.
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     // TODO: Step 1.4 call notify
     notify(NOTIFICATION_ID, builder.build())
