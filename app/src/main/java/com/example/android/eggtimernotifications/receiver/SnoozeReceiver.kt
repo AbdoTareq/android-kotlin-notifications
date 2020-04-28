@@ -27,7 +27,7 @@ import android.text.format.DateUtils
 import androidx.core.app.AlarmManagerCompat
 import androidx.core.content.ContextCompat
 
-class SnoozeReceiver: BroadcastReceiver() {
+class SnoozeReceiver : BroadcastReceiver() {
     private val REQUEST_CODE = 0
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -47,6 +47,16 @@ class SnoozeReceiver: BroadcastReceiver() {
             triggerTime,
             notifyPendingIntent
         )
+
+        // With this SnoozeReceiver will not only schedule a new notification
+        // but will also remove the snoozed one.
+        val notificationManager =
+            ContextCompat.getSystemService(
+                context,
+                NotificationManager::class.java
+            ) as NotificationManager
+        notificationManager.cancelAll()
+
     }
 
 }
