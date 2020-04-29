@@ -6,9 +6,19 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 class MyFirebaseMessagingService: FirebaseMessagingService() {
-    override fun onMessageReceived(p0: RemoteMessage?) {
-        super.onMessageReceived(p0)
+
+    // [START receive_message]
+    override fun onMessageReceived(remoteMessage: RemoteMessage?) {
+        // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
+        Log.d(TAG,"from: ${remoteMessage?.data}")
+
+        // TODO: Step 3.5 check messages for data
+        // Check if message contains a data payload.
+        remoteMessage?.data?.let {
+            Log.d(TAG,"Message data payload: ${remoteMessage.data}")
+        }
     }
+    // [END receive_message]
 
     // TODO: Step 3.2 log registration token
     // [START on_new_token]
