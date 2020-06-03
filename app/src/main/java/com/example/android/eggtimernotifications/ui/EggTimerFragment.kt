@@ -95,7 +95,7 @@ class EggTimerFragment : Fragment() {
 
     }
 
-    // TODO: Step 3.3 subscribe to breakfast topic
+    // TODO: Step 3.3 subscribe to breakfast topic firebase
     private fun subscribeTopic() {
         FirebaseMessaging.getInstance().subscribeToTopic(TOPIC)
             .addOnCompleteListener { task ->
